@@ -17,50 +17,26 @@ public class BookRentalStepdefs {
 
     public BookRentalStepdefs() {} // implementation des steps dans le constructeur (aussi possible dans des méthodes)
 
-    @Given("a student of name {string} and with student id {int}")
-    public void givenAStudent(String nomEtudiant, Integer noEtudiant)  // besoin de refactorer int en Integer car utilisation de la généricité par Cucumber Java 8
-    {
-        etudiant = new Etudiant(biblio);
-        etudiant.setNom(nomEtudiant);
-        etudiant.setNoEtudiant(noEtudiant);
-        biblio.addEtudiant(etudiant);
-    }
 
-    @And("a book of title {string}")
-    public void andABook(String titreLivre)  {
-        Livre liv = new Livre(biblio);
-        liv.setTitre(titreLivre);
-        biblio.addLivre(liv);
-    }
+    // cucumber en anglais
+
+    //TODO GIVEN : givenAStudent
+
+    //TODO: AND : titre du book (andBook)
 
 
-    @Then("There is {int} in his number of rentals")
-    public void thenNbRentals(Integer nbEmprunts) {
-        assertEquals(nbEmprunts.intValue(),etudiant.getNombreDEmprunt());
-    }
+    //TODO: THEN le nombre de location (theNbrRentals)
 
 
-    @When("{string} requests his number of rentals")
-    public void whenRequestsRentals (String nomEtudiant) {
-        etudiant = biblio.getEtudiantByName(nomEtudiant);
-    }
+    //TODO: WHEN : au moment de demande d'emprunter (whenRequestsRentals)
 
-    @When("{string} rents the book {string}")
-    public void whenRenting(String nomEtudiant, String titreLivre)  {
-        etudiant = biblio.getEtudiantByName(nomEtudiant);
-        livre = biblio.getLivreByTitle(titreLivre);
-        etudiant.emprunte(livre);
-    }
 
-    @And("The book {string} is in a rental in the list of rentals")
-    public void andNarrowedBook (String titreLivre){
-        assertTrue(etudiant.getEmprunt().stream().
-                anyMatch(emp -> emp.getLivreEmprunte().getTitre().equals(titreLivre)));
-    }
+    //TODO: WHEN : à l'emprunt
 
-    @And("The book {string} is unavailable")
-    public void andUnvailableBook(String titreLivre) {
-        assertEquals(true, biblio.getLivreByTitle(titreLivre).getEmprunte());
-    }
+
+    // TODO: AND :  le livre est dans la liste d'emprunt
+
+
+    // TODO: AND :  le livre est indisponible
 
 }

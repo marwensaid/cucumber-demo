@@ -17,51 +17,26 @@ public class EmpruntLivreStepdefs { // implements En si vos scénarios sont écr
 
     public EmpruntLivreStepdefs() { }
 
-    @Etantdonné("un etudiant de nom {string} et de noEtudiant {int}")
-    public void etantDonneUnEtudiant(String nomEtudiant, Integer noEtudiant)  // besoin de refactorer int en Integer car utilisation de la généricité par Cucumber Java 8
-    {
-        etudiant = new Etudiant(biblio);
-        etudiant.setNom(nomEtudiant);
-        etudiant.setNoEtudiant(noEtudiant);
-        biblio.addEtudiant(etudiant);
-    };
+    // cucumber en anglais
 
-    @Et("un livre de titre {string}")
-    public void eUnLivre(String titreLivre) {
-        Livre liv = new Livre(biblio);
-        liv.setTitre(titreLivre);
-        biblio.addLivre(liv);
-    }
+    //TODO ETANTDONNE : givenAStudent
+
+    //TODO: ET : titre du book (andBook)
 
 
-    @Alors("Il y a {int} dans son nombre d'emprunts")
-    public void alors(Integer nbEmprunts)  {
-        assertEquals(nbEmprunts.intValue(),etudiant.getNombreDEmprunt());
-    }
+    //TODO: ALORS le nombre de location (theNbrRentals)
 
 
-    @Quand("{string} demande son nombre d'emprunt")
-    public void quandDemandeNbEmprunt(String nomEtudiant) {
-        etudiant = biblio.getEtudiantByName(nomEtudiant);
-    }
+    //TODO: QUAND : au moment de demande d'emprunter (whenRequestsRentals)
 
-    @Quand("{string} emprunte le livre {string}")
-    public void quandEmprunte(String nomEtudiant, String titreLivre)  {
-        etudiant = biblio.getEtudiantByName(nomEtudiant);
-        livre = biblio.getLivreByTitle(titreLivre);
-        etudiant.emprunte(livre);
-    }
 
-    @Et("Il y a le livre {string} dans un emprunt de la liste d'emprunts")
-    public void etLivreDejaEmprunte(String titreLivre) {
-        assertTrue(etudiant.getEmprunt().stream().
-                anyMatch(emp -> emp.getLivreEmprunte().getTitre().equals(titreLivre)));
-    }
+    //TODO: QUAND : à l'emprunt
 
-    @Et("Le livre {string} est indisponible")
-    public void etLivreDispo(String titreLivre)  {
-        assertEquals(true, biblio.getLivreByTitle(titreLivre).getEmprunte());
-    }
+
+    // TODO: ET :  le livre est dans la liste d'emprunt
+
+
+    // TODO: ET :  le livre est indisponible
 
 
 }
