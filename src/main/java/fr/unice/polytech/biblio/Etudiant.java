@@ -1,7 +1,8 @@
 package fr.unice.polytech.biblio;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 
 public class Etudiant {
@@ -13,7 +14,7 @@ public class Etudiant {
 
 	public Etudiant(Bibliotheque biblio) {
 		this.bibliotheque = biblio;
-		emprunt = new ArrayList<>();
+		this.emprunt = new ArrayList<>();
 	}
 
 	public String getNom() {
@@ -33,16 +34,16 @@ public class Etudiant {
 	}
 
 	public Collection<Emprunt> getEmprunt() {
-		return emprunt;
+		return this.emprunt;
 	}
 
 	public int getNombreDEmprunt() {
-		return emprunt.size();
+		return this.emprunt.size();
 	}
 
 	public void emprunte(Livre livre) {
 		Emprunt e = new Emprunt(LocalDate.now().plusDays(15), this, livre);
 		livre.setEmprunte(true);
-		emprunt.add(e);
+		this.emprunt.add(e);
 	}
 }
